@@ -22,7 +22,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/ros-infrastructure/buildfarm.git</url>
+        <url>https://github.com/strands-project/buildfarm.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>

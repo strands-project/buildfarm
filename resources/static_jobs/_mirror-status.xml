@@ -21,7 +21,7 @@ Generated from buildfarm/resources/static_jobs. Do not edit on Jenkins but in th
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>git://github.com/ros-infrastructure/buildfarm.git</url>
+        <url>git://github.com/strands-project/buildfarm.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
