@@ -58,7 +58,14 @@ def compute_missing(distros, arches, fqdn, rosdistro, sourcedeb_only=False):
 
     missing = {}
     for short_package_name in rd.get_package_list():
-        #print ('Analyzing WET stack "%s" for "%s"' % (r['url'], target_distros))
+        # print ('Analyzing WET stack "%s" for "%s"' % (r['url'], target_distros))
+	try:
+            rep_info = rd.get_package_checkout_info()[short_package_name]
+        except: 
+            continue
+        if 'https://github.com/strands-project-releases' not in rep_info['url']:
+            # print ("Skipping package %s as it is not a STRANDS package" % short_package_name)
+            continue
 
         # todo check if sourcedeb is present with the right version
         deb_name = debianize_package_name(rosdistro, short_package_name)
@@ -66,7 +73,7 @@ def compute_missing(distros, arches, fqdn, rosdistro, sourcedeb_only=False):
 
         # Don't report packages as missing if their version is None
         if not expected_version:
-            print("Skipping package %s with no version" % short_package_name)
+            # print("Skipping package %s with no version" % short_package_name)
             continue
 
         missing[short_package_name] = []
