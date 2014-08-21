@@ -3,7 +3,7 @@ server.yaml
 
 To use this it will look for server.yaml in $ROS_HOME/buildfarm for credentials.  Put your Jenkins login in this file.
 
- * url: http://jenkins.willowgarage.com:8080
+ * url: http://10.210.9.131:8080/jenkins
  * username: USERNAME
  * password: PASSWORD
 
@@ -38,24 +38,24 @@ Three graphs 10sec, 3 min, 15 min rolling averages.
 indigo_debbuild
 ---------------
 
-![Indigo Load](http://jenkins.ros.org/label/indigo_debbuild/loadStatistics/graph?type=sec10&width=280&height=200 "indigo_debbuild") ![Indigo Load](http://jenkins.ros.org/label/indigo_debbuild/loadStatistics/graph?type=min&width=280&height=200 "indigo_debbuild") ![Indigo Load](http://jenkins.ros.org/label/indigo_debbuild/loadStatistics/graph?type=hour&width=280&height=200 "indigo_debbuild") 
+![Indigo Load](http://lcas.lincoln.ac.uk/jenkins/label/indigo_debbuild/loadStatistics/graph?type=sec10&width=280&height=200 "indigo_debbuild") ![Indigo Load](http://lcas.lincoln.ac.uk/jenkins/label/indigo_debbuild/loadStatistics/graph?type=min&width=280&height=200 "indigo_debbuild") ![Indigo Load](http://lcas.lincoln.ac.uk/jenkins/label/indigo_debbuild/loadStatistics/graph?type=hour&width=280&height=200 "indigo_debbuild") 
 
 hydro_debbuild
 --------------
 
-![Hydro Load](http://jenkins.ros.org/label/hydro_debbuild/loadStatistics/graph?type=sec10&width=280&height=200 "hydro_debbuild") ![Hydro Load](http://jenkins.ros.org/label/hydro_debbuild/loadStatistics/graph?type=min&width=280&height=200 "hydro_debbuild") ![Hydro Load](http://jenkins.ros.org/label/hydro_debbuild/loadStatistics/graph?type=hour&width=280&height=200 "hydro_debbuild") 
+![Hydro Load](http://lcas.lincoln.ac.uk/jenkins/label/hydro_debbuild/loadStatistics/graph?type=sec10&width=280&height=200 "hydro_debbuild") ![Hydro Load](http://lcas.lincoln.ac.uk/jenkins/label/hydro_debbuild/loadStatistics/graph?type=min&width=280&height=200 "hydro_debbuild") ![Hydro Load](http://lcas.lincoln.ac.uk/jenkins/label/hydro_debbuild/loadStatistics/graph?type=hour&width=280&height=200 "hydro_debbuild") 
 
 groovy_debbuild
 ---------------
 
-![Groovy Load](http://jenkins.ros.org/label/groovy_debbuild/loadStatistics/graph?type=sec10&width=280&height=200 "groovy_debbuild") ![Groovy Load](http://jenkins.ros.org/label/groovy_debbuild/loadStatistics/graph?type=min&width=280&height=200 "groovy_debbuild") ![Groovy Load](http://jenkins.ros.org/label/groovy_debbuild/loadStatistics/graph?type=hour&width=280&height=200 "groovy_debbuild") 
+![Groovy Load](http://lcas.lincoln.ac.uk/jenkins/label/groovy_debbuild/loadStatistics/graph?type=sec10&width=280&height=200 "groovy_debbuild") ![Groovy Load](http://lcas.lincoln.ac.uk/jenkins/label/groovy_debbuild/loadStatistics/graph?type=min&width=280&height=200 "groovy_debbuild") ![Groovy Load](http://lcas.lincoln.ac.uk/jenkins/label/groovy_debbuild/loadStatistics/graph?type=hour&width=280&height=200 "groovy_debbuild") 
 
 debbuild
 --------
 
 Generic jobs and Groovy dry
 
-![Debbuild Load](http://jenkins.ros.org/label/debbuild/loadStatistics/graph?type=sec10&width=280&height=200 "debbuild") ![Load](http://jenkins.ros.org/label/debbuild/loadStatistics/graph?type=min&width=280&height=200 "debbuild") ![Load](http://jenkins.ros.org/label/debbuild/loadStatistics/graph?type=hour&width=280&height=200 "debbuild") 
+![Debbuild Load](http://lcas.lincoln.ac.uk/jenkins/label/debbuild/loadStatistics/graph?type=sec10&width=280&height=200 "debbuild") ![Load](http://lcas.lincoln.ac.uk/jenkins/label/debbuild/loadStatistics/graph?type=min&width=280&height=200 "debbuild") ![Load](http://lcas.lincoln.ac.uk/jenkins/label/debbuild/loadStatistics/graph?type=hour&width=280&height=200 "debbuild") 
 
 
 devel
@@ -63,11 +63,11 @@ devel
 
 Generic jobs and Groovy dry
 
-![Devel Load](http://jenkins.ros.org/label/devel/loadStatistics/graph?type=sec10&width=280&height=200 "devel") ![Load](http://jenkins.ros.org/label/devel/loadStatistics/graph?type=min&width=280&height=200 "devel") ![Load](http://jenkins.ros.org/label/devel/loadStatistics/graph?type=hour&width=280&height=200 "devel") 
+![Devel Load](http://lcas.lincoln.ac.uk/jenkins/label/devel/loadStatistics/graph?type=sec10&width=280&height=200 "devel") ![Load](http://lcas.lincoln.ac.uk/jenkins/label/devel/loadStatistics/graph?type=min&width=280&height=200 "devel") ![Load](http://lcas.lincoln.ac.uk/jenkins/label/devel/loadStatistics/graph?type=hour&width=280&height=200 "devel") 
 
 doc
 --------
 
 Generic jobs and Groovy dry
 
-![Doc Load](http://jenkins.ros.org/label/doc/loadStatistics/graph?type=sec10&width=280&height=200 "doc") ![Load](http://jenkins.ros.org/label/doc/loadStatistics/graph?type=min&width=280&height=200 "doc") ![Load](http://jenkins.ros.org/label/doc/loadStatistics/graph?type=hour&width=280&height=200 "doc") 
+![Doc Load](http://lcas.lincoln.ac.uk/jenkins/label/doc/loadStatistics/graph?type=sec10&width=280&height=200 "doc") ![Load](http://lcas.lincoln.ac.uk/jenkins/label/doc/loadStatistics/graph?type=min&width=280&height=200 "doc") ![Load](http://lcas.lincoln.ac.uk/jenkins/label/doc/loadStatistics/graph?type=hour&width=280&height=200 "doc") 
