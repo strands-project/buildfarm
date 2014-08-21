@@ -8,7 +8,7 @@ import buildfarm.apt_root
 
 def parse_options():
     parser = argparse.ArgumentParser(description='setup a directory to be used as a rootdir for apt')
-    parser.add_argument('--mirror', dest='mirror', action='store', default='http://us.archive.ubuntu.com/ubuntu/',
+    parser.add_argument('--mirror', dest='mirror', action='store', default='http://gb.archive.ubuntu.com/ubuntu/',
                         help='The url for the default repo, like --mirror to debootstrap')
     parser.add_argument('--repo', dest='repo_urls', action='append', metavar=['REPO_NAME@REPO_URL'],
                         help='The name for the source and the url such as ros@http://repos.ros.org/repos/building')
