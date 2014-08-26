@@ -26,8 +26,8 @@ if __name__ == '__main__':
     args = parse_options()
     rd = Rosdistro(args.rosdistro)
     fr = filter_repos(rd, args.url_filter)
-    cmd_options = ''
+    cmd_options = '--repos'
 
     for k, v in fr.iteritems():
-        cmd_options += ' --repos ' + k
+        cmd_options += ' ' + k
     print cmd_options
