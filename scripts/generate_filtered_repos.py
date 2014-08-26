@@ -29,5 +29,5 @@ if __name__ == '__main__':
     cmd_options = ''
 
     for k, v in fr.iteritems():
-        cmd_options += ' --repos '+ k
+        cmd_options += ' --repos ' + k
     print cmd_options
