@@ -63,7 +63,7 @@ $BOPTIMIST sudo apt-get update -c $aptconffile -o Apt::Architecture=$arch @(ARCH
 
 # check precondition that all dependents exist, don't check if no dependencies
 @[if DEPENDENTS]
-sudo $CHECKOUT_DIR/scripts/assert_package_dependencies_present.py $rootdir $aptconffile  $PACKAGE
+$BOPTIMIST sudo $CHECKOUT_DIR/scripts/assert_package_dependencies_present.py $rootdir $aptconffile  $PACKAGE
 @[end if]
 
 # verify we have a clean workspace and output directory
