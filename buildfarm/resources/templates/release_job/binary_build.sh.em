@@ -13,6 +13,7 @@ distro=@(DISTRO)
 arch=@(ARCH)
 base=/var/cache/pbuilder-$distro-$arch
 
+BOPTIMIST="boptimist.py --retry 5 --progressive -- " 
 
 aptconffile=$WORKSPACE/apt.conf
 
@@ -58,7 +59,7 @@ sleep 1
 sudo PYTHONPATH=$PYTHONPATH $CHECKOUT_DIR/scripts/setup_apt_root.py $distro $arch $rootdir --local-conf-dir $WORKSPACE --mirror $mirror --repo "ros@@http://packages.ros.org/ros/ubuntu" --repo "strands@@$APT_TARGET_REPOSITORY" --gpg-key-url https://raw.githubusercontent.com/ros/rosdistro/master/ros.key --gpg-key-url http://lcas.lincoln.ac.uk/repos/public.key --gpg-key-url http://us.archive.ubuntu.com/ubuntu/ubuntu/project/ubuntu-archive-keyring.gpg
 
 # update apt update
-sudo apt-get update -c $aptconffile -o Apt::Architecture=$arch @(ARCH == 'armel' ? "-o Apt::Architectures::=armel") @(ARCH == 'armhf' ? "-o Apt::Architectures::=armhf")
+$BOPTIMIST sudo apt-get update -c $aptconffile -o Apt::Architecture=$arch @(ARCH == 'armel' ? "-o Apt::Architectures::=armel") @(ARCH == 'armhf' ? "-o Apt::Architectures::=armhf")
 
 # check precondition that all dependents exist, don't check if no dependencies
 @[if DEPENDENTS]
@@ -75,7 +76,7 @@ cd $work_dir
 
 
 # Pull the sourcedeb
-sudo apt-get source $PACKAGE -c $aptconffile
+$BOPTIMIST sudo apt-get source $PACKAGE -c $aptconffile
 
 # extract version number from the dsc file
 version=`ls *.dsc | sed s/${PACKAGE}_// | sed s/$distro\.dsc//`
@@ -88,7 +89,7 @@ then
   #make sure the base dir exists
   sudo mkdir -p $base
   #create the base image
-  sudo pbuilder create \
+  $BOPTIMIST sudo pbuilder create \
     --distribution $distro \
     --aptconfdir $rootdir/etc/apt \
     --basetgz $basetgz \
@@ -99,7 +100,7 @@ then
     --debootstrapopts --arch=$arch \
     --debootstrapopts --keyring=/etc/apt/trusted.gpg
 else
-  sudo pbuilder --update --basetgz $basetgz
+  $BOPTIMIST sudo pbuilder --update --basetgz $basetgz
 fi
 
 
@@ -117,7 +118,7 @@ cat debian/changelog
 chmod +x hooks/A50stamp
 
 #  --binary-arch even if "any" type debs produce arch specific debs
-sudo pbuilder  --build \
+$BOPTIMIST sudo pbuilder  --build \
     --basetgz $basetgz \
     --buildresult $output_dir \
     --debbuildopts \"-b\" \
@@ -141,7 +142,7 @@ scp -r $output_dir/*$distro* rosbuild@@$ROS_REPO_FQDN:$UPLOAD_DIR
 ssh rosbuild@@$ROS_REPO_FQDN -- PYTHONPATH=/home/rosbuild/reprepro_updater/src python /home/rosbuild/reprepro_updater/scripts/include_folder.py -d $distro -a $arch -f $UPLOAD_DIR -p $PACKAGE -c --delete --invalidate
 
 # update apt again
-sudo apt-get update -c $aptconffile -o Apt::Architecture=$arch @(ARCH == 'armel' ? "-o Apt::Architectures::=armel") @(ARCH == 'armhf' ? "-o Apt::Architectures::=armhf")
+$BOPTIMIST sudo apt-get update -c $aptconffile -o Apt::Architecture=$arch @(ARCH == 'armel' ? "-o Apt::Architectures::=armel") @(ARCH == 'armhf' ? "-o Apt::Architectures::=armhf")
 
 # check that the uploaded successfully
 sudo $CHECKOUT_DIR/scripts/assert_package_present.py $rootdir $aptconffile  $PACKAGE
