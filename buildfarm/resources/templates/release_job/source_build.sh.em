@@ -15,7 +15,7 @@ cd $WORKSPACE/monitored_vcs
 rm -rf $WORKSPACE/output
 rm -rf $WORKSPACE/workspace
 
-boptimist.py --retry 5 --progressive -- $WORKSPACE/monitored_vcs/scripts/generate_sourcedeb $RELEASE_URI $PACKAGE $ROSDISTRO $SHORT_PACKAGE_NAME --working $WORKSPACE/workspace --output $WORKSPACE/output --repo-fqdn $FQDN 
+$WORKSPACE/monitored_vcs/scripts/generate_sourcedeb $RELEASE_URI $PACKAGE $ROSDISTRO $SHORT_PACKAGE_NAME --working $WORKSPACE/workspace --output $WORKSPACE/output --repo-fqdn $FQDN 
 ret=$?
 
 # clean up the workspace to save disk space
