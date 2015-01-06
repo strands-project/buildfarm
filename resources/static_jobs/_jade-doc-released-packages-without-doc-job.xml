@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Trigger jobs with missing Debian packages for Groovy.&#xd;
+  <description>Generate minimal manifest.yaml files for released packages which do not have a doc job for Jade.&#xd;
 &#xd;
 Generated from buildfarm/resources/static_jobs. Do not edit on Jenkins but in the repository.</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>180</daysToKeep>
-    <numToKeep>30</numToKeep>
+    <numToKeep>100</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -14,16 +14,14 @@ Generated from buildfarm/resources/static_jobs. Do not edit on Jenkins but in th
   <properties>
     <jenkins.advancedqueue.AdvancedQueueSorterJobProperty plugin="PrioritySorter@2.6">
       <useJobPriority>true</useJobPriority>
-      <priority>858</priority>
+      <priority>970</priority>
     </jenkins.advancedqueue.AdvancedQueueSorterJobProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.0.4">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <name/>
-        <refspec/>
-        <url>https://github.com/strands-project/buildfarm.git</url>
+        <url>git://github.com/ros-infrastructure/jenkins_scripts.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -32,26 +30,29 @@ Generated from buildfarm/resources/static_jobs. Do not edit on Jenkins but in th
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-    <gitTool>Default</gitTool>
     <submoduleCfg class="list"/>
     <extensions>
-      <hudson.plugins.git.extensions.impl.PerBuildTag />
+      <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        <relativeTargetDir>monitored_vcs</relativeTargetDir>
+      </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
     </extensions>
   </scm>
-  <assignedNode>master</assignedNode>
+  <assignedNode>debbuild</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers/>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>0 3 * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>#!/bin/bash
+      <command>#!/bin/bash -x
 
-ls
-source ./setup.sh
-./scripts/trigger_missing.py groovy --commit</command>
+$WORKSPACE/monitored_vcs/doc_released_packages jade --upload</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
