@@ -221,7 +221,10 @@ if __name__ == '__main__':
         sourcedeb_timeout = None
         binarydeb_timeout = None
 
-    release_jobs.check_for_circular_dependencies(dependencies)
+    try:
+        release_jobs.check_for_circular_dependencies(dependencies)
+    except RuntimeError as re:
+        print('RuntimeError in checking for circular deps: %s' % re)
 
     if args.rosdistro == 'groovy':
         # even for wet_only the dry packages need to be consider, else they are not added as downstream dependencies for the wet jobs
