@@ -13,7 +13,7 @@ distro=@(DISTRO)
 arch=@(ARCH)
 base=/var/cache/pbuilder-$distro-$arch
 
-BOPTIMIST="boptimist.py --retry 1 --progressive -- " 
+BOPTIMIST="boptimist.py --retry 2 --progressive -- " 
 
 aptconffile=$WORKSPACE/apt.conf
 
