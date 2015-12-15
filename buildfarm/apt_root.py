@@ -90,7 +90,7 @@ def setup_apt_rootdir(rootdir,
             if distro in ['oneiric', 'quantal', 'raring']:
                 repo = 'http://old-releases.ubuntu.com/ubuntu/'
             else:
-                repo = 'http://us.archive.ubuntu.com/ubuntu/'
+                repo = 'http://gb.archive.ubuntu.com/ubuntu/'
         else:
             repo = 'http://ports.ubuntu.com/ubuntu-ports/'
     else:
