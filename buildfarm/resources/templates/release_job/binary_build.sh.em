@@ -109,7 +109,7 @@ mkdir -p hooks
 
 echo "#!/bin/bash -ex
 echo \`env\`
-cd /tmp/buildd/*/
+cd /tmp/buildd/${PACKAGE}*/
 apt-get install devscripts -y
 prevversion=\`dpkg-parsechangelog | grep Version | awk '{print \$2}'\`
 debchange -D $distro -v \$prevversion-\`date +%Y%m%d-%H%M-%z\` 'Time stamping.'
